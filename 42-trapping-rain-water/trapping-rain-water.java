@@ -5,20 +5,23 @@ class Solution {
         int n = height.length;
         Stack<Integer> st = new Stack<>();
         int water = 0;
-
-        for (int i = 0; i < n; i++) {
-            int h = height[i];
-            while (!st.isEmpty() && h > height[st.peek()]) {
-                int th = st.pop(); 
-                int prev = th;
-                if (!st.isEmpty()) {
-                     prev = st.peek(); 
-                }
-                int width = i - prev - 1;
-                int he = Math.min(height[prev], height[i]) - height[th];
-                water += width * he;
+        int l =0;
+        int r = n-1;
+        int maxl =0;
+        int maxr =0;
+       
+        while(l<r){
+            if(maxl<height[l]){
+                maxl =height[l];
             }
-            st.push(i);
+            if(maxr<height[r]){
+                maxr = height[r];
+            }
+           if(maxr>maxl){
+            water+=maxl-height[l++];
+           } else {
+            water+=maxr-height[r--];
+           }
         }
 
         return water;
