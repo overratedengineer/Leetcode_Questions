@@ -5,16 +5,16 @@ class Solution {
         int n = s.length();
         int rc= numRows;
         int jump = 2*(rc-1);
-        String res ="";
+         StringBuilder res = new StringBuilder();
         for(int i=0;i<rc;i++ ){
         for(int j=i;j<n;j+=jump){
-            res+=s.charAt(j);
+            res.append(s.charAt(j));
             if(i!=0 && i!=rc-1 && j+jump-(2*i)<n){
-                res+=s.charAt(j+jump-(2*i));
+                res.append(s.charAt(j+jump-(2*i)));
             }
         }
         }
        
-     return res;
+     return res.toString();
     }
 }
