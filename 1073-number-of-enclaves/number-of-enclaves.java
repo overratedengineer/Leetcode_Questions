@@ -1,18 +1,26 @@
 class Solution {
-     void dfs(int i , int j ,int grid[][]){
-        grid[i][j]=0;
+     void dfs(int r , int c ,int grid[][]){
+     
         int n = grid.length;
         int m = grid[0].length;
-        int x[] ={1,-1,0,0};
-        int y[] ={0,0,-1,1};
-        for(int k=0;k<4;k++){
-           int xi = i+x[k];
-           int yj = j+y[k];
-           if(xi<n&&xi>=0 && yj<m &&yj>=0){
-            if(grid[xi][yj]==1)  dfs(xi,yj,grid);
+        // int x[] ={1,-1,0,0};
+        // int y[] ={0,0,-1,1};
+        // for(int k=0;k<4;k++){
+        //    int xi = i+x[k];
+        //    int yj = j+y[k];
+        //    if(xi<n&&xi>=0 && yj<m &&yj>=0){
+        //     if(grid[xi][yj]==1)  dfs(xi,yj,grid);
            
-           }
-        }
+        //    }
+        // }
+        //    grid[r][c] = 0;
+         if(r<n&&r>=0 && c<m &&c>=0 && grid[r][c]==1){
+            grid[r][c] = 0;
+            dfs( r+1, c,grid);
+            dfs( r-1, c,grid);
+            dfs( r,c+1,grid);
+            dfs( r,c-1,grid);
+         }
     }
     public int numEnclaves(int[][] grid) {
         int n = grid.length;
