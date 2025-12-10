@@ -1,5 +1,5 @@
 class Solution {
-    public void dfs(int i , int j ,int grid[][]){
+    static void dfs(int i , int j ,int grid[][]){
         grid[i][j]=0;
         int n = grid.length;
         int m = grid[0].length;
