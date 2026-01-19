@@ -11,7 +11,8 @@ class Solution {
             int mid = s+(e-s)/2;
             long vb =0;
             for (int x:arr) {
-               vb+=(int)Math.ceil((double)x/mid);
+             vb += (x+mid-1)/mid;
+
             }
             if (vb>t) {
                 s=mid+1;
