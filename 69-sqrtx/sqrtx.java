@@ -15,6 +15,6 @@ class Solution {
               s=(int)mid+1;
             } 
         }
-        return s-1;
+        return e;
     }
 }
