@@ -1,39 +1,30 @@
 class Solution {
-    public int minEatingSpeed(int[] piles, int h) {
-        int max = 0;
-        for(int i =0;i<piles.length;i++){
-            max =Math.max(piles[i],max);
-        }
-        int s = 1;
+    public int minEatingSpeed(int[] arr, int h) {
+        int s =1;
+        int max=0;
+       for(int i=0;i<arr.length;i++){
+        max = Math.max(max,arr[i]);
+       }
         int e = max;
-        int ans =max;
         while(s<=e){
-            int mid = s+((e-s)/2);
-            if(poss(mid,h,piles)){
-                ans =mid;
-                e = mid-1;
-            } else {
-                s =mid+1;
+            int mid =s+(e-s)/2;
+            long val=0;
+            for(int i=0;i<arr.length;i++){
+             if(arr[i]<=mid){
+               val++;
+             } else if(arr[i]%mid==0){
+               val+=(arr[i]/mid);
+             } else {
+                 val+=(arr[i]/mid);
+                 val++;
+             }
+            }
+            if(val>h){
+               s=mid+1;
+            } else if(val<=h){
+                e=mid-1;
             }
         }
-      return ans;
-    }
-    public boolean poss(int v,int h ,int piles[]){
-        long count = 0;
-        
-        for(int i =0;i<piles.length;i++){
-            if(v>=piles[i]){
-                count+=1;
-            } else 
-            if(piles[i]%v==0){
-               count += piles[i]/v;
-            } else {
-                count += (piles[i]/v) +1;
-            }
-        }
-        if(count<=h){
-            return true;
-        } 
-            return false;
+        return s;
     }
 }
