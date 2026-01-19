@@ -16,14 +16,11 @@ class Solution {
                 if(x<=mid){
                     count++;
                 } else {
-                    count=0;
-                }
-                if(count==k){
-                    vb++;
-                    count=0;
+                   vb+=count/k;
+                   count=0;
                 }
             }
-
+                  vb+=count/k;
             if (vb<m) {
                 s=mid+1;
             } else {
