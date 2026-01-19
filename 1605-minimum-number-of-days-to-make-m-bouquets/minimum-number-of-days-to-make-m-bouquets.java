@@ -12,6 +12,7 @@ class Solution {
             long vb =0;
             int count =0;
             for (int x:arr) {
+                if (vb>=m) break;
                 if(x<=mid){
                     count++;
                 } else {
