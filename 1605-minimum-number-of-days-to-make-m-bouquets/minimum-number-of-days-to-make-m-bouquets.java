@@ -1,7 +1,7 @@
 class Solution {
     public int minDays(int[] arr, int m, int k) {
           int s=1,e=0;
-          
+          if(m*k>arr.length){return -1;}
         for (int x : arr) {
             e=Math.max(e, x);
             s=Math.min(s,x);
