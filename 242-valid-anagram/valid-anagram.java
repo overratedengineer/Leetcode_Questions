@@ -1,15 +1,15 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
-        if(s.length()!=t.length()) return false;
-        int arr1[] = new int[26];
-        int arr2[] = new int[26];
-        for(int i=0;i<s.length();i++) {
-            arr1[(int)s.charAt(i)-97]++;
-            arr2[(int)t.charAt(i)-97]++;
+       String s1 = s.toLowerCase().replaceAll("\\s", "");
+        String s2 = t.toLowerCase().replaceAll("\\s", "");
+         boolean isAnagram = false;
+        if (s1.length() == s2.length()) {
+            char[] arr1 = s1.toCharArray();
+            char[] arr2 = s2.toCharArray();
+            Arrays.sort(arr1);
+            Arrays.sort(arr2);
+            isAnagram = Arrays.equals(arr1, arr2);
         }
-        for(int i=0;i<26;i++){
-            if(arr1[i]!=arr2[i]) return false;
-        }
-        return true;
+        return isAnagram;
     }
 }
