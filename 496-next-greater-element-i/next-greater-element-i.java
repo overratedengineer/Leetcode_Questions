@@ -15,11 +15,9 @@ class Solution {
         }
         int m = nums1.length;
         int ans1[] = new int[m];
-        int j=0;
-        for(int i:nums1){
-           ans1[j] =map.get(i);
-           j++;
-        }
+      for(int i = 0; i < m; i++){
+    ans1[i] = map.get(nums1[i]);
+}
 return ans1;
 
     }
