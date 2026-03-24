@@ -3,7 +3,7 @@ import java.util.*;
 class Solution {
     public String removeKdigits(String s, int k) {
 
-        Stack<Character> st = new Stack<>();
+        Deque<Character> st = new ArrayDeque<>();
 
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
