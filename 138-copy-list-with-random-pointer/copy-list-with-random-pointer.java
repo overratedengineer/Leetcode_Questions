@@ -16,12 +16,12 @@ class Solution {
             temp = temp.next.next;
         }
         Node dummy = new Node(0);
-        Node copyHead = dummy;
+        Node temp2 = dummy;
         temp = head;
         while (temp != null) {
             Node copy = temp.next;
-            copyHead.next = copy;
-            copyHead = copy;
+            temp2.next = copy;
+            temp2 = copy;
             temp.next = copy.next;
             temp = temp.next;
         }
