@@ -1,18 +1,23 @@
 class Solution {
-    public int numSubarraysWithSum(int[] nums, int goal) {
-        HashMap<Integer,Integer> map = new HashMap<>();
+
+    public int find(int arr[],int goal){
         int count =0;
-        int prefix =0;
-        map.put(0,1);
-        for(int i=0;i<nums.length;i++){
-            int val = nums[i];
-             prefix += nums[i];
-            if(map.containsKey(prefix-goal)){
-               count += map.get(prefix - goal); 
-            }     
-            map.put(prefix, map.getOrDefault(prefix, 0) + 1);
+        int sum =0;
+        int l = 0;
+        if(goal<0) return 0;
+        for(int i=0;i<arr.length;i++){
+            sum+=arr[i];
+            while(sum>goal){
+                sum-=arr[l];
+                l++;
+            }
+            count+=i-l+1;
         }
         return count;
+    }
+    public int numSubarraysWithSum(int[] nums, int goal) {
+       // try optimal one - to find for <goal+1 - <goal this means finding for sum=goal
 
+      return find(nums,goal) - find(nums,goal-1);
     }
 }
