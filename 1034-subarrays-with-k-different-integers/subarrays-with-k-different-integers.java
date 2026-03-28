@@ -1,12 +1,12 @@
 class Solution {
 
     public int find(int arr[],int k){
+          if(k<0) return 0;
         HashMap<Integer,Integer> map = new HashMap<>();
         int l=0;
         int count=0;
         for(int r=0;r<arr.length;r++){
             map.put(arr[r], map.getOrDefault(arr[r],0) + 1);
-            if(k<0) return 0;
             while(map.size()>k){
                 int val = map.get(arr[l]);
                 map.put(arr[l],val-1);
