@@ -14,24 +14,15 @@
  * }
  */
 class Solution {
-   
-       
-
-    public List<Integer> iot(TreeNode root, List<Integer> al) {
-        if (root == null) {
+    List<Integer> al = new ArrayList<>();
+    public List<Integer> inorderTraversal(TreeNode root) {
+          if(root==null){
             return al;
         }
-        iot(root.left, al); 
-        al.add(root.val);           
-        iot(root.right, al);      
-
+       
+        inorderTraversal(root.left);
+         al.add(root.val);
+        inorderTraversal(root.right);
         return al;
     }
-
-   public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> al = new ArrayList<>();
-        return iot(root, al);
-    }
 }
-
- 
