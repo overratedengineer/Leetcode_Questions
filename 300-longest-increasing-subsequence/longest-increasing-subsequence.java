@@ -1,9 +1,9 @@
 class Solution {
-    public int solve(int i,int p,int[] nums,int dp[][]){
+    public int solve(int i,int p,int[] nums,Integer dp[][]){
         if(i==nums.length){
             return 0;
         }
-        if(dp[i][p+1]!=0){
+        if(dp[i][p+1]!=null){
             return dp[i][p+1]; 
         }
          int a = solve(i+1,p,nums,dp);
@@ -16,7 +16,7 @@ class Solution {
     }
     public int lengthOfLIS(int[] nums) {
         int n = nums.length;
-        int dp[][] = new int[n][n+1];
+        Integer dp[][] = new Integer[n][n+1];
          return solve(0,-1,nums,dp);
     }
 }
