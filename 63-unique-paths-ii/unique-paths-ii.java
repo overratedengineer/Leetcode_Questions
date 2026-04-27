@@ -2,11 +2,10 @@ class Solution {
     public int solve(int i,int j,int arr[][],Integer dp[][]){
         int n = arr.length;
         int m = arr[0].length;
-         if(arr[i][j]==1) {return 0;}
+    if(arr[i][j]==1) {return 0;}
       if(i==n-1 && j==m-1){
        return 1;
       }
-     // if(arr[i][j]==1) {return 0;}
       if(dp[i][j]!=null) return dp[i][j] ;
       int w =0;
       if(i+1<n) {
