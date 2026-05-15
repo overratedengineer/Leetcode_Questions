@@ -1,20 +1,20 @@
 class Solution {
-    public int minOperations(int[] arr) {
-     int n = arr.length;
-  int ss[] = new int[1000001];
-for(int i = 2; i*i <= 1000000; i++){
-    if(ss[i] == 0){
-        for(int j = i*i; j <= 1000000; j += i){
-            if(ss[j] == 0){
-                ss[j] = i;
+static int ss[] = new int[1000001];
+static{
+    for(int i = 2; i*i <= 1000000; i++){
+        if(ss[i] == 0){
+            for(int j = i*i; j <= 1000000; j += i){
+                if(ss[j] == 0){
+                    ss[j] = i;
+                }
             }
         }
     }
 }
-      
-        
-        int count =0;
-       
+
+    public int minOperations(int[] arr) {
+     int n = arr.length;        
+       int count =0;
         for(int i = n-2; i >= 0; i--){
             if(arr[i] > arr[i+1]){
                 if(ss[arr[i]] == 0){
