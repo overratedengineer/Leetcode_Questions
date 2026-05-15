@@ -1,5 +1,5 @@
 class Solution {
-static int ss[] = new int[1000001];
+private static int ss[] = new int[1000001];
 static{
     for(int i = 2; i*i <= 1000000; i++){
         if(ss[i] == 0){
