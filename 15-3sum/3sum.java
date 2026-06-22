@@ -1,49 +1,43 @@
-import java.util.*;
-
 class Solution {
-    public List<List<Integer>> threeSum(int[] nums) {
-
-        List<List<Integer>> al = new ArrayList<>();
-        int n = nums.length;
-        if (n < 3) return al;
-
-        Arrays.sort(nums);
-
-        int i = 0;
-
-        while (i < n - 2) {
-
-            int j = i + 1;
-            int k = n - 1;
-
-            while (j < k) {
-                int sum = nums[i] + nums[j] + nums[k];
-                if (sum == 0) {
-                    List<Integer> temp = new ArrayList<>();
-                    temp.add(nums[i]);
-                    temp.add(nums[j]);
-                    temp.add(nums[k]);
-                    al.add(temp);
-
-                    int prevj = nums[j];
-                    int prevk = nums[k];
-                    while (j < k && nums[j] == prevj) j++;
-                    while (j < k && nums[k] == prevk) k--;
-                }
-                else if (sum < 0) {
-                    int prevj = nums[j];
-                    while (j < k && nums[j] == prevj) j++;
-                }
-                else {
-                    int prevk = nums[k];
-                    while (j < k && nums[k] == prevk) k--;
-                }
+    public List<List<Integer>> threeSum(int[] arr) {
+        int n = arr.length;
+        Arrays.sort(arr);
+        
+       List<List<Integer>> al = new ArrayList<>();
+        for(int i=0;i<n;i++){
+            int j=i+1;
+            int k=n-1;
+            if(i>0 && arr[i]==arr[i-1]) continue;
+            while(j<k){
+            int sum = arr[i]+arr[j]+arr[k];
+            if(sum==0){
+            List<Integer> al2 = new ArrayList<>();
+            al2.add(arr[i]);
+            al2.add(arr[j]);
+            al2.add(arr[k]);
+             al.add(al2);
+            k--;
+            j++;
+            while(k>0&&arr[k]==arr[k+1]){
+                k--;
             }
-
-            int previ = nums[i];
-            while (i < n - 2 && nums[i] == previ) i++;
+             while(j<n&&arr[j]==arr[j-1]){
+                j++;
+            }
+            } else if(sum>0){
+                k--;
+                while(k>0 && arr[k]==arr[k+1]){
+                k--;
+            }
+            }  else {
+                j++;
+                  while(j<n && arr[j]==arr[j-1]){
+                j++;
+            }
+             if(k<=j) continue;
+            }
         }
-
+        }
         return al;
     }
 }
