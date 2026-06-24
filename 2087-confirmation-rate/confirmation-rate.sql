@@ -1,5 +1,5 @@
 -- # Write your MySQL query statement below
-select s.user_id,round(sum(case when action='confirmed' then 1 else 0 end)*1.0/count(*),2) as Confirmation_rate
+select s.user_id,round(avg(case when action='confirmed' then 1 else 0 end),2) as Confirmation_rate
 from 
 Signups as s
 left outer join 
