@@ -1,11 +1,4 @@
 class Solution {
-     static {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            try (FileWriter fw = new FileWriter("display_runtime.txt")) {
-                fw.write("0");
-            } catch (Exception e) {}
-        }));
-    }
     public int[] rearrangeArray(int[] nums) {
         int no = nums.length;
         int arr[] = new int[no];
@@ -22,8 +15,6 @@ class Solution {
             }
             i++;
         }
-          System.gc();
         return arr;
-
     }
 }
