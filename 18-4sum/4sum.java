@@ -1,43 +1,29 @@
 class Solution {
-    public List<List<Integer>> fourSum(int[] nums, int target) {
-        Arrays.sort(nums);
+    public List<List<Integer>> fourSum(int[] arr, int target) {
+        int n = arr.length;
+        Arrays.sort(arr);
         List<List<Integer>> al = new ArrayList<>();
-        int n = nums.length;
-        if (n < 4) return al;
-        for (int l = 0; l < n - 3; l++) {
-            if (l > 0 && nums[l] == nums[l - 1]) continue;
-
-            int i = l + 1;
-            while (i < n - 2) {
-                if (i > l + 1 && nums[i] == nums[i - 1]) {
-                    i++;
-                    continue;
+        for(int i=0;i<n;i++){
+            if(i>0 && arr[i]==arr[i-1]){ continue;}
+            for(int k=i+1;k<n;k++){
+                 if(k>i+1 && arr[k]==arr[k-1]){ continue;}
+               int x = k+1;
+               int y= n-1;
+               while(x<y){
+                long sum = (long)arr[i]+arr[k]+arr[x]+arr[y];
+                if(sum>target){
+                    y--;
+                } else
+                if(sum<target){
+                    x++;
+                } else {
+                    al.add(Arrays.asList(arr[i],arr[x], arr[y],arr[k]));
+                    x++;
+                    y--;
+                    while(x<n-1 &&arr[x]==arr[x-1])x++;
+                    while(y>0 && arr[y]==arr[y+1])y--;
                 }
-
-                int j = i + 1;
-                int k = n - 1;
-
-                while (j < k) {
-                    long sum = (long) nums[l] + nums[i] + nums[j] + nums[k];
-
-                    if (sum == target) {
-                        al.add(Arrays.asList(nums[l], nums[i], nums[j], nums[k]));
-
-                        int prevj = nums[j];
-                        int prevk = nums[k];
-                        while (j < k && nums[j] == prevj) j++;
-                        while (j < k && nums[k] == prevk) k--;
-                    }
-                    else if (sum < target) {
-                        int prevj = nums[j];
-                        while (j < k && nums[j] == prevj) j++;
-                    }
-                    else {
-                        int prevk = nums[k];
-                        while (j < k && nums[k] == prevk) k--;
-                    }
-                }
-                i++;
+               }
             }
         }
         return al;
