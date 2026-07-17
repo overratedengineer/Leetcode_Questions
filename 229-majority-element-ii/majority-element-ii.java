@@ -9,11 +9,13 @@ class Solution {
             if(c1==0 && arr[i]!=e2){
                 e1=arr[i];
                 c1=1;
-            } else
+                continue;
+            } 
             if(arr[i]!=e1 && c2==0){
                 e2=arr[i];
                 c2=1;
-            } else
+                continue;
+            } 
             if(arr[i]==e1){
                 c1++;
             } else
