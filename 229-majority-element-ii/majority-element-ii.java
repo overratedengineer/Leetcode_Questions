@@ -1,37 +1,39 @@
 class Solution {
-    public List<Integer> majorityElement(int[] nums) {
-        int c1=0;
+    public List<Integer> majorityElement(int[] arr) {
+        int n = arr.length;
+        int e1 = -1;
+        int c1 =0;
+        int e2 = -1;
         int c2=0;
-        int e1=-1;
-        int e2=-1;
-        int n = nums.length;
-        for(int i=0;i<nums.length;i++){
-            if(c1==0 && e2!=nums[i]){
-                e1=nums[i];
+        for(int i=0;i<n;i++){
+            if(c1==0 && arr[i]!=e2){
+                e1=arr[i];
+                c1=1;
+            } else
+            if(arr[i]!=e1 && c2==0){
+                e2=arr[i];
+                c2=1;
+            } else
+            if(arr[i]==e1){
                 c1++;
-            } else if(c2==0 && e1!=nums[i]){
-                e2=nums[i];
+            } else
+            if(arr[i]==e2){
                 c2++;
-            } else if(e1==nums[i]){
-                c1++;
-            } else if (e2==nums[i]){
-                c2++;
-            } else {
+            } else{
                 c1--;
                 c2--;
             }
         }
-        c1 = 0;
-        c2 = 0;
-        for (int x : nums) {
-            if (x == e1) c1++;
-            else if (x == e2) c2++;
-        }
-
+        c1=0;
+        c2=0;
         List<Integer> al = new ArrayList<>();
-        if(c1>n/3) al.add(e1);
-        if(c2>n/3) al.add(e2);
-       
+        for(int i=0;i<n;i++){
+            if(arr[i]==e1) c1++;
+           else if(arr[i]==e2) c2++;
+        }
+        if(c1>=(int)(n/3)+1) al.add(e1);
+        if(c2>=(int)(n/3)+1) al.add(e2);
+
         return al;
     }
 }
