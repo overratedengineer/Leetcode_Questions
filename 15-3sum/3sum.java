@@ -2,7 +2,6 @@ class Solution {
     public List<List<Integer>> threeSum(int[] arr) {
         int n = arr.length;
         Arrays.sort(arr);
-        
        List<List<Integer>> al = new ArrayList<>();
         for(int i=0;i<n;i++){
             int j=i+1;
