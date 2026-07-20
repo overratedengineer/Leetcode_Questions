@@ -1,33 +1,26 @@
 class Solution {
-    public int search(int[] nums, int target) {
-        int n=nums.length;
-        int s=0, e=n-1;
-        while(s<e) {
-            int mid=s+(e-s)/2;
-            if(nums[mid]<=nums[e]) {
-                e=mid;
-            }else{
-                s=mid+1;
+    public int search(int[] arr, int target) {
+        int n = arr.length;
+        int s = 0;
+        int e = n-1;
+        while(s<=e){
+            int mid = s+(e-s)/2;
+            if(arr[mid]==target){
+                return mid;
+            } else {
+                //sorted half konsa h 
+                if(arr[mid]>=arr[s]){
+                    if( arr[mid]>=target && target>=arr[s])
+                    e=mid-1;
+                    else s=mid+1;
+                } else {
+                    if(arr[mid]<=target && target<=arr[e])
+                     s=mid+1;
+                     else e=mid-1;
+                }
             }
         }
-
-        int pivot=s;
-        s=0;
-        e=n-1;
-
-        if(target>=nums[pivot]&&target<=nums[e]) {
-            s=pivot;
-        }else{
-            e=pivot-1;
-        }
-
-        while (s<=e) {
-            int mid =s+(e-s)/2;
-            if (nums[mid]==target) return mid;
-            else if (nums[mid]<target) s=mid+1;
-            else e=mid-1;
-        }
-
         return -1;
+
     }
 }
