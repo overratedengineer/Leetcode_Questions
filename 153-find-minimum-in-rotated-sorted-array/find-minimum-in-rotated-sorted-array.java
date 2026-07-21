@@ -1,15 +1,20 @@
 class Solution {
-    public int findMin(int[] nums) {
-            int n=nums.length;
-        int s=0, e=n-1;
-        while(s<e) {
-            int mid=s+(e-s)/2;
-            if(nums[mid]<=nums[e]) {
-                e=mid;
-            }else{
+    public int findMin(int[] arr) {
+        int n = arr.length;
+        int s =0;
+        int e = n-1;
+        int min = 5001;
+        while(s<=e){
+            int mid = s+(e-s)/2;
+          if(arr[s]<=arr[mid]){
+                min = Math.min(arr[s],min);
                 s=mid+1;
-            }
+          } else {
+              min = Math.min(arr[mid],min);
+              e=mid-1;
+          }
         }
-        return nums[s];
+        return min;
+
     }
 }
