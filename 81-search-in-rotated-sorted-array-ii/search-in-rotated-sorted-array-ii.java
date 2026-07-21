@@ -8,15 +8,12 @@ class Solution {
             if(arr[mid]==k){
                 return true;
             } else {
-                while(s<=e && arr[s]==arr[e] ){
-                    if(arr[s]==k) return true;
-                    s++;
-                    e--;
-                }
-                if(s>e){
-                    break;
-                }
-                // find sorted one
+                
+            if (arr[s] == arr[mid] && arr[mid] == arr[e]) {
+                s++;
+                e--;
+            } 
+               else
                 if(arr[s]<=arr[mid]){
                    if(k>=arr[s] && k<arr[mid]){
                     e=mid-1;
