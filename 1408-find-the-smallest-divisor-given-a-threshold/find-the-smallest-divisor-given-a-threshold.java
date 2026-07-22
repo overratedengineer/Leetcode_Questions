@@ -1,24 +1,17 @@
 class Solution {
     public int smallestDivisor(int[] arr, int t) {
-          int s=1,e=0;
-         
-        for (int x : arr) {
-            e=Math.max(e, x);
-        }
-        
-        int max =e;
-        while (s<=e) {
+        int n =arr.length;
+        int s =1;
+        int e =0;
+        for(int i:arr) e=Math.max(e,i);
+        while(s<=e){
             int mid = s+(e-s)/2;
-            long vb =0;
-            for (int x:arr) {
-             vb += (x+mid-1)/mid;
-
-            }
-            if (vb>t) {
+            int v =0;
+            for(int i:arr) v+=(i+mid-1)/mid;
+            if(v>t)
                 s=mid+1;
-            } else {
+            else 
                 e=mid-1;
-            }
         }
         return s;
     }
