@@ -1,29 +1,30 @@
 class Solution {
-    public int shipWithinDays(int[] arr, int days) {
-        int s = 0;
+    public int shipWithinDays(int[] arr, int d) {
+        int s = 1;
         int e = 0;
         for(int i:arr){
-            s=Math.max(s,i);
+        s=Math.max(s,i);
         e+=i;
         }
-
+        int ans =0;
         while(s<=e){
-            int mid = (s+e)/2;
-            int d =0;
-            int sum=0;
-            for(int i : arr){
-              sum+=i;
-              if(sum>mid){
-                d++;
-                sum=i;
-              }
+            int mid = s+(e-s)/2;
+             int cd = 1;
+            int sum = 0;
+            for (int i : arr) {
+                if (sum + i > mid) {
+                    cd++;
+                    sum=i;
+                } else {
+                    sum+=i;
+                }
             }
-            if(d>=days){
+            if(cd>d){
                 s=mid+1;
             } else {
                 e=mid-1;
             }
         }
-      return s;
+        return s;
     }
 }
