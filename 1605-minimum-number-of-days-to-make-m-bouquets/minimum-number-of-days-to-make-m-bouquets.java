@@ -3,7 +3,8 @@ class Solution {
         int s =1;
         int e =0;
         int n= arr.length;
-        //if(m*k>n) return -1;
+       if ((long)m * k > n)
+    return -1;
         for(int i:arr) e=Math.max(e,i);
         int max =e;
         while(s<=e){
@@ -19,8 +20,6 @@ class Solution {
                 s=mid+1;
             else e=mid-1;
         }
-        if (s>max)
-        return -1;
-        else  return s;
+         return s;
     }
 }
