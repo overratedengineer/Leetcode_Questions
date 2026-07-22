@@ -1,37 +1,26 @@
 class Solution {
     public int minDays(int[] arr, int m, int k) {
         int s =1;
-        int e =1;
-        for(int i:arr){
-            e=Math.max(e,i);
-        }
-        int fa =-1;
+        int e =0;
+        int n= arr.length;
+        //if(m*k>n) return -1;
+        for(int i:arr) e=Math.max(e,i);
+        int max =e;
         while(s<=e){
-            int mid =s+(e-s)/2;
-            int c=0;
-            int ans =0;
+            int mid = s+(e-s)/2;
+            int needed = 0;
+            int mn =0;
             for(int i:arr){
-                if(c==k){
-                    ans++;
-                    c=0;
-                }
-                if(i<=mid){
-                  c++;
-                } else {
-                    c=0;
-                }
+                 if(i<=mid) needed++;
+                 else needed =0;
+                 if(needed == k) {mn++; needed =0;}
             }
-             if(c==k){
-                    ans++;
-                    c=0;
-                }
-           if(ans>=m){
-               fa=mid;
-               e=mid-1;
-            } else {
-               s=mid+1;
-            }
+            if(m>mn)
+                s=mid+1;
+            else e=mid-1;
         }
-        return fa;
+        if (s>max)
+        return -1;
+        else  return s;
     }
 }
