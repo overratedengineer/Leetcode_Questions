@@ -1,25 +1,21 @@
 class Solution {
     public int minEatingSpeed(int[] arr, int h) {
-        int s = 1, e = 0;
-        // this is clean code
-        for (int x : arr) {
-            e = Math.max(e, x);
-        }
-
-        while (s <= e) {
-            int mid = s + (e - s) / 2;
-            long hours = 0;
-
-            for (int x : arr) {
-                hours += (x + mid - 1) / mid;
+        long s =1;
+        long e =0;
+        for(int i:arr) e= Math.max(e,i);
+        while(s<=e){
+            long mid = (e+s)/2;
+            long needed =0;
+            for(int i:arr){
+                //if(i<=mid) { needed++; continue;}
+                needed+=(i+mid-1)/mid;
             }
-
-            if (hours > h) {
-                s = mid + 1;
+            if(needed>h){
+                s=mid+1;
             } else {
-                e = mid - 1;
+                e=mid-1;
             }
         }
-        return s;
+        return (int)s;
     }
 }
