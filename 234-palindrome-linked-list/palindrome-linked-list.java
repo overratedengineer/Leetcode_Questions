@@ -8,42 +8,35 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-
-
-
 class Solution {
     public boolean isPalindrome(ListNode head) {
-         ListNode slow = head;
+        if(head==null || head.next==null) return true;
         ListNode fast = head;
-        while(fast.next!=null && fast.next.next!=null ){
-            slow=slow.next;
+        ListNode slow = head;
+        while(fast.next!=null && fast.next.next!=null){
             fast=fast.next.next;
-          
+            slow=slow.next;
         }
-        
-       ListNode middle = slow; 
-        ListNode chk ;
-          chk = reverse(middle.next);
-       ListNode temp = head;
-        while(temp!=null && chk!=null ){
-            if(temp.val!=chk.val){
+         ListNode temp = slow.next;
+         slow.next = null;
+         ListNode prev = null;
+        while(temp!=null){
+            ListNode front = temp.next;
+            temp.next=prev;
+            prev=temp;
+            temp=front;
+        }
+        temp=head;
+         while(temp!=null && prev!=null){
+            if(temp.val!=prev.val){
                 return false;
             }
             temp=temp.next;
-            chk=chk.next;
-        }
-       return true;
-    }
-    public ListNode reverse(ListNode head){
-        ListNode prev = null;
-        ListNode curr = head;
-        ListNode temp = head;
-        while(curr!=null){
-          temp = curr.next;
-           curr.next=prev;
-           prev = curr;
-           curr=temp;
-        }
-        return prev;
+            prev=prev.next;
+         }
+         if(prev!=null){
+            return false;
+         }
+          return true;
     }
 }
