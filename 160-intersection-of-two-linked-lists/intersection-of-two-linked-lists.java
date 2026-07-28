@@ -14,9 +14,6 @@ public class Solution {
         ListNode t1 = headA;
         ListNode t2 = headB;
         while(t1!=t2){
-            if((t1==null) && (t2==null)){
-                return new ListNode(0);
-            }
             if(t1==null) {t1=headB; continue;}
             if(t2==null) {t2=headA; continue;}
              t1=t1.next;
