@@ -3,7 +3,7 @@ import java.util.*;
 class Solution {
     public int trap(int[] height) {
         int n = height.length;
-        Stack<Integer> st = new Stack<>();
+        //Stack<Integer> st = new Stack<>();
         int water = 0;
         int l =0;
         int r = n-1;
