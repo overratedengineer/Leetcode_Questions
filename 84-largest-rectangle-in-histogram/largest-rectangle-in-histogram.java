@@ -3,7 +3,7 @@ class Solution {
     public static int largestRectangleArea(int[] arr) {
         int n = arr.length;
         int max =0;
-        Stack<Integer> st = new Stack<>();
+        Deque<Integer> st = new ArrayDeque<>();
         for(int i=0;i<n;i++){
             while(!st.isEmpty() && arr[st.peek()]>arr[i]){
                 int val = arr[st.pop()];
