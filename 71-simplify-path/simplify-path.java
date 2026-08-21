@@ -12,14 +12,10 @@ class Solution {
                 st.push(arr[i]);
             }
         }
-        while(!st.isEmpty()){
-            ans.append(new StringBuilder(st.pop()).reverse().toString()+"/");
+        while(!st.isEmpty()) {
+            ans.insert(0, "/" + st.pop());
         }
-       ans.reverse();
-    //    if(ans.length()>0) {
-    //      ans.deleteCharAt(0);
-    //     }
-         if(ans.length() == 0) {
+        if(ans.length() == 0) {
             return "/";
         }
        return ans.toString();
